@@ -1,0 +1,9 @@
+{
+  "tenant_id": "synthetic-demo",
+  "commercial_model": "subscription",
+  "access_tier": "starter",
+  "effective_from": "2026-10-16",
+  "billing_currency": "MDL",
+  "term": "pilot",
+  "notes": "SYNTHETIC ONLY. No real pricing, ownership or contract."
+}
