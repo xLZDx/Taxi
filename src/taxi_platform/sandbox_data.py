@@ -62,7 +62,7 @@ def build_synthetic_fleet(
         drivers.append({
             "Name": f"SYNTHETIC Driver {n:04d}",
             "ExternalDriverID": driver_id,
-            "VehicleID": vehicle_id,
+            "ExternalVehicleID": vehicle_id,
         })
         fleet.append({
             "Name": f"SYNTHETIC Vehicle {n:04d}",
@@ -102,7 +102,7 @@ def build_synthetic_fleet(
         total_received += received
         total_cleared += cleared
 
-    payout_due = Decimal("4000000.00")  # Artificial stress-test obligation.
+    payout_due = total_cleared + Decimal("1000000.00")  # Synthetic shortfall injection.
     manifest: dict[str, object] = {
         "synthetic_only": True,
         "tenant": "synthetic-taxi-lab",
@@ -111,6 +111,7 @@ def build_synthetic_fleet(
             "One fictional driver per vehicle; this is NOT a statement about the customer fleet.",
             "All monetary amounts and documents are invented in MDL.",
             "Snapshot date is 2026-10-09; investor contractual obligation is artificial.",
+            "Investor payment is set to synthetic cleared cash + MDL 1,000,000.",
             "UNKNOWN reports are not treated as confirmed zero or as collectible cash.",
             "No bank or Planfix connectivity; cleared funds are simulated, not evidenced.",
         ],

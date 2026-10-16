@@ -43,6 +43,7 @@ def test_confirmed_received_cleared_totals_keep_financial_distinctions() -> None
                 <= Decimal(row["ReceivedMDL"])
                 <= Decimal(row["ConfirmedMDL"])
             )
+    assert Decimal(manifest["simulated_cleared_cash_gap_mdl"]) == Decimal("1000000.00")
     assert Decimal(manifest["simulated_cleared_mdl"]) < Decimal(manifest["received_mdl"])
     assert Decimal(manifest["received_mdl"]) < Decimal(manifest["confirmed_mdl"])
     assert all(row["InternalDueDate"] == "09-10-2026" for row in rows["exceptions.csv"])
