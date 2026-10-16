@@ -22,6 +22,10 @@ Driver economic activity -> confirmed settlement -> money received and cleared -
 - [PRD](docs/02-product/PRD.md)
 - [24 workflow scenarios](docs/02-product/BUSINESS_WORKFLOWS.md)
 - [Read-only Planfix audit](docs/01-discovery/PLANFIX_AUDIT.md)
+- [Planfix synthetic lab setup](docs/01-discovery/PLANFIX_SANDBOX_LAB.md)
+- [Implementation playbook](docs/07-delivery/IMPLEMENTATION_PLAYBOOK.md)
+- [First executable business process](docs/02-product/WF-001_DAILY_CASH_AND_INVESTOR_PAYOUT.md)
+- [Investor and operator roles](docs/01-discovery/STAKEHOLDER_BOUNDARY.md)
 - [Cash forecasting design](docs/04-finance/CASH_FORECAST.md)
 - [Product/partner proposal](docs/08-business/PARTNER_PROPOSAL.md)
 - [Backlog](docs/07-delivery/BACKLOG.md)
@@ -35,6 +39,14 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\python -m ruff check .
 .\.venv\Scripts\python scripts\verify_scaffold.py
 ~~~
+
+To generate a **500-vehicle synthetic Planfix lab** (no Planfix account or API involved):
+
+~~~powershell
+.\.venv\Scripts\python scripts\generate_sandbox_data.py --vehicles 500 --seed 42 --output artifacts/sandbox
+~~~
+
+The generator writes fictional `drivers.csv`, `vehicles.csv`, `settlements.csv`, `exceptions.csv` and `manifest.json` under an ignored directory. It refuses to overwrite existing generated files. See the lab guide for explicit CSV-to-custom-field mapping before import.
 
 The src package is a small dependency-free domain prototype with tests. It is not a cash management service, database, Planfix plug-in or deployable CRM.
 

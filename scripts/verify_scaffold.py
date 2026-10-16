@@ -29,6 +29,13 @@ REQUIRED = [
     "tests/test_journal.py",
     "tests/test_commercial.py",
     "tests/test_planning.py",
+    "tests/test_sandbox_data.py",
+    "scripts/generate_sandbox_data.py",
+    "src/taxi_platform/sandbox_data.py",
+    "docs/01-discovery/PLANFIX_SANDBOX_LAB.md",
+    "docs/01-discovery/STAKEHOLDER_BOUNDARY.md",
+    "docs/02-product/WF-001_DAILY_CASH_AND_INVESTOR_PAYOUT.md",
+    "docs/07-delivery/IMPLEMENTATION_PLAYBOOK.md",
 ]
 
 
