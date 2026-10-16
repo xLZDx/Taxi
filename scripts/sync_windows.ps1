@@ -15,7 +15,14 @@ if (-not (Test-Path $Target)) {
     return
 }
 if (-not (Test-Path (Join-Path $Target ".git"))) {
-    throw "Target exists but is not a Git checkout: $Target. Manual inspection required."
+    $Children = @(Get-ChildItem -LiteralPath $Target -Force -ErrorAction Stop)
+    if ($Children.Count -ne 0) {
+        throw "Target exists and is nonempty but not a Git checkout: $Target. Manual inspection required."
+    }
+    git clone --branch $Branch --single-branch $Remote $Target
+    if ($LASTEXITCODE -ne 0) { throw "Clone into existing empty directory failed" }
+    Write-Host "Cloned $Branch into empty $Target"
+    return
 }
 $ActualRemote = (git -C $Target remote get-url origin).Trim()
 if ($LASTEXITCODE -ne 0 -or $ActualRemote -notmatch "xLZDx/Taxi(\.git)?$") {
