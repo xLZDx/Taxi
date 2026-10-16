@@ -1,7 +1,7 @@
 """Internal scheduling contingency; not a financial reserve."""
 
 from datetime import datetime, timedelta
-from decimal import Decimal, ROUND_CEILING
+from decimal import ROUND_CEILING, Decimal
 
 
 def with_contingency(duration: timedelta, factor: Decimal = Decimal("0.20")) -> timedelta:

@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 
 import pytest
@@ -15,10 +15,10 @@ def test_default_time_contingency_is_twenty_percent() -> None:
 
 
 def test_reverse_schedule_preserves_fixed_external_deadline() -> None:
-    deadline = datetime(2026, 11, 10, 10, 0, tzinfo=timezone.utc)
+    deadline = datetime(2026, 11, 10, 10, 0, tzinfo=UTC)
     assert internal_start_before_external_deadline(
         deadline, timedelta(days=5)
-    ) == datetime(2026, 11, 4, 10, 0, tzinfo=timezone.utc)
+    ) == datetime(2026, 11, 4, 10, 0, tzinfo=UTC)
 
 
 def test_cannot_use_naive_deadline_or_negative_time() -> None:
